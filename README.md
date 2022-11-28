@@ -29,6 +29,7 @@ npm install
 cd contacts_with_sql
 ```
 6. run the application by the comment:
+```bash
 py contacts.py
 ```
 
