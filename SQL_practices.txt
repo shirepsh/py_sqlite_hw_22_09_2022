@@ -1,0 +1,42 @@
+1) SELECT CategoryID, * FROM [Products]
+WHERE CategoryID IN ('2','3','7')
+ORDER BY CategoryID
+
+2) SELECT SUM(OrderDetails.Quantity) AS 'total quantity' , round(SUM(OrderDetails.Quantity*Products.Price)) as 'total price' FROM [Orders]
+INNER JOIN OrderDetails ON OrderDetails.OrderID = ORDERS.OrderID
+INNER JOIN Products ON Products.ProductID = OrderDetails.ProductID
+WHERE EmployeeID IN ('4','7','9')
+
+3) SELECT * FROM [Orders]
+inner join OrderDetails on OrderDetails.orderid = orders.orderid
+inner join Employees on Employees.employeeid = orders.employeeid
+inner join products on OrderDetails.ProductID = products.ProductID
+where price between 10 and 20
+and FirstName between 'A' and 'M'
+
+4) CREATE PROCEDURE [dbo].[return_customers]
+AS
+BEGIN
+	SELECT * from Customers
+END
+
+5)  --get_employee_id_return_sales '5' 
+CREATE PROCEDURE [dbo].[get_employee_id_return_sales]
+	@employee_id nvarchar (15)
+AS
+BEGIN
+	SELECT * from orders where @employee_id = EmployeeID
+END
+
+6) --get_num_return_products '22'
+CREATE PROCEDURE get_num_return_products
+	@number nvarchar(15)
+AS
+BEGIN
+	SELECT * from Products
+	where UnitPrice < @number
+END
+GO
+
+7) INSERT INTO CUSTOMERS (CustomerID, CompanyNAME, CONTACTNAME, CITY) 
+VALUES ('111', 'MICROSOFT', 'SHIR', 'BAT YAM')
